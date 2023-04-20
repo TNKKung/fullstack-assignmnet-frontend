@@ -1,0 +1,42 @@
+.tab-list {
+  @apply flex;
+}
+
+/*
+  Tab-List direction
+*/
+
+.tab-list-horizontal {
+  @apply flex-row px-2 space-x-4;
+}
+
+.tab-list-vertical {
+  @apply flex-col;
+}
+
+/*
+  Tab
+*/
+
+.tab {
+  @apply text-xs cursor-pointer;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+/*
+  Tab direction
+*/
+
+.tab-list-horizontal .tab {
+  @apply py-2 text-lg leading-3 border-b-2 border-transparent border-solid;
+}
+.tab-list-horizontal .tab.active {
+  @apply border-gray-600;
+}
+.tab-list-vertical .tab {
+  @apply p-3;
+}
+.tab-list-vertical .tab.active {
+  @apply text-gray-600;
+}
