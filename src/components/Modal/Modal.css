@@ -1,0 +1,32 @@
+.modal {
+  @apply relative w-full p-4 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md top-1/2 left-1/2;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+/*
+  Modal sizes
+*/
+.modal-ss {
+  @apply w-60;
+}
+
+.modal-xs {
+  @apply max-w-sm;
+}
+.modal-sm {
+  @apply max-w-md;
+}
+.modal-md {
+  @apply max-w-lg;
+}
+.modal-lg {
+  @apply max-w-xl;
+}
+.modal-xl {
+  @apply max-w-3xl;
+}
+
+.modal-overlay {
+  @apply fixed inset-0 z-50 bg-gray-400 bg-opacity-70;
+}
