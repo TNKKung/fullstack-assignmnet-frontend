@@ -7,3 +7,10 @@ export interface itemObject {
   latest: number;
   id: string;
 }
+
+export interface listItemObject {
+  pending: itemObject[];
+  accepted: itemObject[];
+  resolved: itemObject[];
+  rejected: itemObject[];
+}
