@@ -5,11 +5,13 @@ import {
 } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 
+import { BoardTabProps } from "./type";
+
 import Card from "../Ticket";
 import List from "../List";
+
 import { itemObject, listItemObject } from "../../utils/type";
 import { addToList, changeStatus, removeFromList } from "../../utils/dndHelper";
-import { BoardTabProps } from "./type";
 
 const BoardTab: React.FC<BoardTabProps> = ({ propItems }) => {
   const [items, setItems] = useState<listItemObject>({

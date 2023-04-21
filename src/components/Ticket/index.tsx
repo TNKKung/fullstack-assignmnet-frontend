@@ -1,7 +1,8 @@
 import React from "react";
 
-import { IconTicket } from "../Icons";
 import { TicketProps } from "./type";
+
+import { IconTicket } from "../Icons";
 
 const Card: React.FC<TicketProps> = ({ data }) => {
   return (

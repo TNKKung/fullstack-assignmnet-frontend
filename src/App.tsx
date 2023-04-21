@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
+import config from "./config";
+
 import { IconTicket, IconTable, IconColumn } from "./components/Icons";
 import Incorporate from "./components/BoardTab";
 import { Tab, TabList, TabPanel, Tabs } from "./components/Tabs";
@@ -33,33 +35,39 @@ function App() {
 
   const handleCreatedTicket = useCallback(() => {
     setIsLoading(true);
-    try {
-      axios
-        .post("//localhost:4000/v1/ticket/", {
-          title,
-          description,
-          contact,
-        })
-        .then((response) => {
-          setResponseData(response.data);
-          const formatData = formatItem(response.data);
-          setItems(formatData);
-        });
-      handleClickCloseModalCreateTicket();
-    } catch (err) {
-      if (axios.isAxiosError(err)) {
-        console.log(err.response?.data);
-      }
-    }
+    axios
+      .post(`//${config.endPoint}`, {
+        title,
+        description,
+        contact,
+      })
+      .then((response) => {
+        setResponseData(response.data);
+        const formatData = formatItem(response.data);
+        setItems(formatData);
+      })
+      .catch((err) => {
+        if (axios.isAxiosError(err)) {
+          console.log(err.response?.data);
+        }
+      });
+    handleClickCloseModalCreateTicket();
     setIsLoading(false);
   }, [contact, description, handleClickCloseModalCreateTicket, title]);
 
   useEffect(() => {
-    axios.get("//localhost:4000/v1/ticket/").then((response) => {
-      setResponseData(response.data);
-      const formatData = formatItem(response.data);
-      setItems(formatData);
-    });
+    axios
+      .get(`//${config.endPoint}`)
+      .then((response) => {
+        setResponseData(response.data);
+        const formatData = formatItem(response.data);
+        setItems(formatData);
+      })
+      .catch((err) => {
+        if (axios.isAxiosError(err)) {
+          console.log(err.response?.data);
+        }
+      });
   }, []);
 
   return (

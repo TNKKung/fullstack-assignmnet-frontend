@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 
+import { IModalCreateTicketProps } from "./type";
+
 import { IconClose, IconSpin } from "../Icons";
 import { Modal } from "../Modal";
-import { IModalCreateTicketProps } from "./type";
 
 const ModalCreateTicket: React.FC<IModalCreateTicketProps> = ({
   isLoading,

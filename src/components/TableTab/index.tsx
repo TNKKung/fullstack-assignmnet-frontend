@@ -7,9 +7,13 @@ import React, {
 } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import axios from "axios";
-import { IconChevronUp, IconFilter } from "../Icons";
-import { itemObject } from "../../utils/type";
+
 import { ITableTabProps } from "./type";
+
+import { IconChevronUp, IconFilter } from "../Icons";
+
+import { itemObject } from "../../utils/type";
+import config from "../../config";
 
 const TableTab: React.FC<ITableTabProps> = ({ propItems }) => {
   const [items, setItems] = useState<itemObject[]>([]);
@@ -24,7 +28,7 @@ const TableTab: React.FC<ITableTabProps> = ({ propItems }) => {
   }, [items, stateFilter]);
 
   useEffect(() => {
-    axios.get("//localhost:4000/v1/ticket").then((response) => {
+    axios.get(`//${config.endPoint}`).then((response) => {
       setItems(response.data);
     });
   }, [propItems]);
