@@ -9,12 +9,9 @@ import { Menu, Transition } from "@headlessui/react";
 import axios from "axios";
 import { IconChevronUp, IconFilter } from "../Icons";
 import { itemObject } from "../../utils/type";
+import { ITableTabProps } from "./type";
 
-interface Props {
-  propItems: itemObject[];
-}
-
-const TableTab: React.FC<Props> = ({ propItems }) => {
+const TableTab: React.FC<ITableTabProps> = ({ propItems }) => {
   const [items, setItems] = useState<itemObject[]>([]);
   const [statusSortBy, setStatusSortBy] = useState<number>(0);
   const [latestSortBy, setLatestSortBy] = useState<number>(0);
