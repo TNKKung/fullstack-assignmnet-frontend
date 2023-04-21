@@ -8,19 +8,10 @@ import React, {
 import { Menu, Transition } from "@headlessui/react";
 import axios from "axios";
 import { IconChevronUp, IconFilter } from "../Icons";
+import { itemObject } from "../../utils/type";
 
 interface Props {
   propItems: itemObject[];
-}
-
-interface itemObject {
-  created: number;
-  contact: string;
-  description: string;
-  title: string;
-  status: string;
-  latest: number;
-  id: string;
 }
 
 const TableTab: React.FC<Props> = ({ propItems }) => {
@@ -103,7 +94,8 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                         setStateFilter("all");
                       }}
                     >
-                      All
+                      <input type="checkbox" checked={stateFilter === "all"} />
+                      <p>All</p>
                     </button>
                   )}
                 </Menu.Item>
@@ -118,7 +110,11 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                         setStateFilter("pending");
                       }}
                     >
-                      Pending
+                      <input
+                        type="checkbox"
+                        checked={stateFilter === "pending"}
+                      />
+                      <p>Pending</p>
                     </button>
                   )}
                 </Menu.Item>
@@ -133,7 +129,11 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                         setStateFilter("accepted");
                       }}
                     >
-                      Accepted
+                      <input
+                        type="checkbox"
+                        checked={stateFilter === "accepted"}
+                      />
+                      <p>Accepted</p>
                     </button>
                   )}
                 </Menu.Item>
@@ -148,7 +148,11 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                         setStateFilter("resolved");
                       }}
                     >
-                      Resolved
+                      <input
+                        type="checkbox"
+                        checked={stateFilter === "resolved"}
+                      />
+                      <p>Resolved</p>
                     </button>
                   )}
                 </Menu.Item>
@@ -163,7 +167,11 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                         setStateFilter("rejected");
                       }}
                     >
-                      Rejected
+                      <input
+                        type="checkbox"
+                        checked={stateFilter === "rejected"}
+                      />
+                      <p>Rejected</p>
                     </button>
                   )}
                 </Menu.Item>
