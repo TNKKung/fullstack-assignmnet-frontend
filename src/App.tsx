@@ -73,9 +73,6 @@ function App() {
           title,
           description,
           contact,
-          status: "pending",
-          created: Date.now(),
-          latest: Date.now(),
         })
         .then((response) => {
           setResponseData(response.data);
