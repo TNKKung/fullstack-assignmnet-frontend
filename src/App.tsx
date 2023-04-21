@@ -12,16 +12,8 @@ import { Modal } from "./components/Modal";
 import Incorporate from "./components/BoardTab";
 import { Tab, TabList, TabPanel, Tabs } from "./components/Tabs";
 import TableTab from "./components/TableTab";
-
-interface itemObject {
-  created: number;
-  contact: string;
-  description: string;
-  title: string;
-  status: string;
-  latest: number;
-  id: string;
-}
+import { formatItem } from "./utils/formatItem";
+import { itemObject } from "./utils/type";
 
 interface listItemObject {
   pending: itemObject[];
@@ -76,7 +68,6 @@ function App() {
   const handleCreatedTicket = useCallback(() => {
     setIsLoading(true);
     try {
-      setIsLoading(true);
       axios
         .post("//localhost:4000/v1/ticket/", {
           title,
@@ -87,23 +78,9 @@ function App() {
           latest: Date.now(),
         })
         .then((response) => {
-          let pending: itemObject[] = [];
-          let accepted: itemObject[] = [];
-          let resolved: itemObject[] = [];
-          let rejected: itemObject[] = [];
           setResponseData(response.data);
-          response.data.forEach((item: itemObject) => {
-            if (item.status === "pending") {
-              pending.push(item);
-            } else if (item.status === "accepted") {
-              accepted.push(item);
-            } else if (item.status === "resolved") {
-              resolved.push(item);
-            } else {
-              rejected.push(item);
-            }
-          });
-          setItems({ pending, accepted, resolved, rejected });
+          const formatData = formatItem(response.data);
+          setItems(formatData);
         });
       handleClickCloseModalCreateTicket();
     } catch (err) {
@@ -116,23 +93,9 @@ function App() {
 
   useEffect(() => {
     axios.get("//localhost:4000/v1/ticket/").then((response) => {
-      let pending: itemObject[] = [];
-      let accepted: itemObject[] = [];
-      let resolved: itemObject[] = [];
-      let rejected: itemObject[] = [];
       setResponseData(response.data);
-      response.data.forEach((item: itemObject) => {
-        if (item.status === "pending") {
-          pending.push(item);
-        } else if (item.status === "accepted") {
-          accepted.push(item);
-        } else if (item.status === "resolved") {
-          resolved.push(item);
-        } else {
-          rejected.push(item);
-        }
-      });
-      setItems({ pending, accepted, resolved, rejected });
+      const formatData = formatItem(response.data);
+      setItems(formatData);
     });
   }, []);
 
