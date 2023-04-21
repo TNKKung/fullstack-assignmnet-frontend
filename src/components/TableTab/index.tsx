@@ -206,9 +206,7 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                   <p className="text-gray-700">Status</p>
                 </button>
               </th>
-              <th scope="col" className="px-6 py-3">
-                Created
-              </th>
+
               <th scope="col" className="px-6 py-3">
                 <button
                   type="button"
@@ -241,9 +239,6 @@ const TableTab: React.FC<Props> = ({ propItems }) => {
                     {item.description}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{item.status}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {item.created}
-                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">{dateString}</td>
                 </tr>
               );
