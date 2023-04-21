@@ -4,20 +4,11 @@ import {
   DraggableProvided,
 } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-import Card from "../Card/index";
-import List from "../List/index";
-
-interface itemObject {
-  created: number;
-  contact: string;
-  description: string;
-  title: string;
-  status: string;
-  latest: number;
-  id: string;
-}
+import Card from "../Ticket";
+import List from "../List";
+import { itemObject } from "../../utils/type";
+import { addToList, changeStatus, removeFromList } from "../../utils/dndHelper";
 
 interface listItemObject {
   pending: itemObject[];
@@ -37,24 +28,6 @@ const BoardTab: React.FC<Props> = ({ propItems }) => {
     resolved: [],
     rejected: [],
   });
-
-  const removeFromList = (list: any, index: any) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(index, 1);
-    return [removed, result];
-  };
-
-  const addToList = (list: any, index: any, element: any) => {
-    const result = Array.from(list);
-    result.splice(index, 0, element);
-    return result;
-  };
-
-  const changeStatus = (id: string, newStatus: string) => {
-    axios
-      .patch("//localhost:4000/v1/ticket/", { id, newStatus })
-      .then((response) => console.log(response));
-  };
 
   const onDragEnd = (result: any) => {
     if (!result.destination) {
