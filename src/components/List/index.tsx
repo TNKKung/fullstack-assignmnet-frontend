@@ -1,12 +1,7 @@
 import React from "react";
 import { Droppable, DroppableProvided } from "react-beautiful-dnd";
 
-interface ListProps {
-  children?: React.ReactNode;
-  title: string;
-  onDragEnd: (data: any) => void;
-  name: string;
-}
+import { ListProps } from "./type";
 
 const List: React.FC<ListProps> = ({ children, title, name }) => {
   return (
