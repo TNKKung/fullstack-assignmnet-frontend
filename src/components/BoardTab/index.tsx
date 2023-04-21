@@ -7,21 +7,11 @@ import { useEffect, useState } from "react";
 
 import Card from "../Ticket";
 import List from "../List";
-import { itemObject } from "../../utils/type";
+import { itemObject, listItemObject } from "../../utils/type";
 import { addToList, changeStatus, removeFromList } from "../../utils/dndHelper";
+import { BoardTabProps } from "./type";
 
-interface listItemObject {
-  pending: itemObject[];
-  accepted: itemObject[];
-  resolved: itemObject[];
-  rejected: itemObject[];
-}
-
-interface Props {
-  propItems: listItemObject;
-}
-
-const BoardTab: React.FC<Props> = ({ propItems }) => {
+const BoardTab: React.FC<BoardTabProps> = ({ propItems }) => {
   const [items, setItems] = useState<listItemObject>({
     pending: [],
     accepted: [],
