@@ -1,16 +1,12 @@
 import React from "react";
-import { itemObject } from "../../utils/type";
+
 import { IconTicket } from "../Icons";
+import { TicketProps } from "./type";
 
-interface Props {
-  children?: React.ReactNode;
-  data: itemObject;
-}
-
-const Card: React.FC<Props> = ({ data }) => {
+const Card: React.FC<TicketProps> = ({ data }) => {
   return (
     <div className="flex flex-row w-full h-24 p-4 border border-gray-400 rounded-md shadow-lg bg-gray-50">
-      <div className="flex items-center justify-center w-32 h-full rounded-md">
+      <div className="flex items-center justify-center w-32 h-full border rounded-md">
         <IconTicket className="w-12 h-12 text-gray-400" />
       </div>
       <div className="w-full p-2 space-y-1 text-xs">
