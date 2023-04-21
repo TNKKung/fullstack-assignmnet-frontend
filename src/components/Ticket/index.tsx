@@ -1,13 +1,6 @@
 import React from "react";
+import { itemObject } from "../../utils/type";
 import { IconTicket } from "../Icons";
-
-interface itemObject {
-  id: string;
-  title: string;
-  contact: string;
-  description: string;
-  status: string;
-}
 
 interface Props {
   children?: React.ReactNode;
@@ -21,7 +14,7 @@ const Card: React.FC<Props> = ({ data }) => {
         <IconTicket className="w-12 h-12 text-gray-400" />
       </div>
       <div className="w-full p-2 space-y-1 text-xs">
-        <p className="w-full h-8 font-bold break-words">{data.title}</p>
+        <p className="w-full font-bold break-words">{data.title}</p>
         <p className="w-full h-8 break-words">{data.description}</p>
       </div>
     </div>
