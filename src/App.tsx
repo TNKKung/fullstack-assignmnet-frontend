@@ -11,7 +11,7 @@ import { formatItem } from "./utils/formatItem";
 import { itemObject, listItemObject } from "./utils/type";
 import ModalCreateTicket from "./components/ModalCreateTicket";
 
-function App() {
+const App: React.FC = () => {
   const [isOpenCreateTicket, setIsOpenCreateTicket] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -119,6 +119,6 @@ function App() {
       )}
     </>
   );
-}
+};
 
 export default App;
